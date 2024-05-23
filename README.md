@@ -28,7 +28,7 @@ To run Wanderlust locally, follow these steps:
 
 ## Contributing 🤝
 
-We welcome contributions from the community! For detailed information on how to contribute code, fixes, or features, please refer to our dedicated contribution guidelines file: [CONTRIBUTING.md](CONTRIBUTING.md).
+We welcome contributions from the community! For detailed information on how to contribute code, fixes, or features, please refer to our dedicated contribution guidelines file: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License 📝
 
