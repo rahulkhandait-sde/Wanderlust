@@ -1,1 +1,1 @@
-# Wanderlust
+# Wanderlust: Fuel Your Next Adventure
