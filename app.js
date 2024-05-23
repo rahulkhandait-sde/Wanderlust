@@ -1,3 +1,10 @@
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
+}
+
+// console.log(process.env.SECRET);
+
+
 //////REQUIREMENTS//////
 const express = require("express");
 const app = express();
@@ -34,9 +41,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //////ROUTES//////
 //Root Route
-app.get("/", (req, res) => {
-  res.send("Hi, I am root!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hi, I am root!");
+// });
 
 //Index Route
 app.get(
