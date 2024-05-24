@@ -21,6 +21,7 @@
     "joi": "^17.11.0",
     "method-override": "^3.0.0",
     "mongoose": "^7.6.3",
-    "multer-storage-cloudinary": "^4.0.0"
+    "multer-storage-cloudinary": "^4.0.0",
+    "serve-favicon": "^2.5.0"
   }
 }

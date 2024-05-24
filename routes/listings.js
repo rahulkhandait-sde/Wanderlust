@@ -4,7 +4,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/ExpressError.js");
 // const {listingSchema, reviewSchema} = require("../schemas.js");
 const Listing = require("../models/listing.js");
-
+const listingController = require("../controllers/listings.js");
 
 const validateListing = (req, res, next) => {
     let{error} = listingSchema.validate(req.body);
@@ -18,68 +18,40 @@ const validateListing = (req, res, next) => {
 
 
 //Index Route
-router.get(
-    "",
-    wrapAsync(async (req, res) => {
-      const allListings = await Listing.find({});
-      res.render("listings/index.ejs", { allListings });
-    })
-  );
+router.get("/",wrapAsync(listingController.index));
   
+
   //New Route
-  router.get("/new", (req, res) => {
-    res.render("listings/new.ejs");
-  });
+  router.get("/new", listingController.renderNewForm);
   
   //Show Route
   router.get(
     "/:id",
-    wrapAsync(async (req, res) => {
-      let { id } = req.params;
-      const listing = await Listing.findById(id);
-      res.render("listings/show.ejs", { listing });
-    })
+    wrapAsync(listingController.showListing)
   );
   
   //Create Route
   router.post(
     "",
-    wrapAsync(async (req, res, next) => {
-      if (!req.body.listing) throw new ExpressError(400, "Invalid listing data");
-      const newListing = new Listing(req.body.listing);
-      await newListing.save();
-      res.redirect("");
-    })
+    wrapAsync(listingController.createListing)
   );
   
   //Edit Route
   router.get(
     "/:id/edit",
-    wrapAsync(async (req, res) => {
-      let { id } = req.params;
-      const listing = await Listing.findById(id);
-      res.render("listings/edit.ejs", { listing });
-    })
+    wrapAsync(listingController.renderEditForm)
   );
   
   //Update Route
   router.put(
     "/:id",
-    wrapAsync(async (req, res) => {
-      if (!req.body.listing) throw new ExpressError(400, "Invalid listing data");
-      let { id } = req.params;
-      await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-      res.redirect(`/${id}`);
-    })
+    wrapAsync(listingController.updateListing)
   );
   
   //Delete Route
   router.delete(
     "/:id",
-    wrapAsync(async (req, res) => {
-      await Listing.findByIdAndDelete(req.params.id); //req.params.id is the id of the listing to be deleted
-      res.redirect("");
-    })
+    wrapAsync(listingController.destroyListing)
   );
 
 module.exports = router;
