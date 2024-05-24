@@ -16,12 +16,26 @@ body {
 }
 
 .fa-compass {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #fe424d;
+  margin-left: 5rem;
+}
+
+.navbar-brand {
+  font-size: 2.1rem !important;
+  font-weight: bold;
+  color: #ff0000 !important;
+  margin-left: 1.2rem;
+}
+.navbar-brand span {
+  margin-left: 0.3rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .nav-link {
   color: #222 !important;
+  font-weight: bold !important;
+  font-size: larger !important;
 }
 
 /* Footer */
