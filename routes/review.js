@@ -17,20 +17,13 @@ const validateReview = (req, res, next) => {
     }
 };
 
+const reviewController = require("../controllers/reviews.js")
+
 //Post Review Route
 router.post(
     "/",
     validateReview,
-    wrapAsync(async (req, res) => {
-    let listing = await Listing.findById(req.params.id);
-    let newReview = new Review(req.body.review);
-
-    listing.reviews.push(newReview);
-    await newReview.save();
-    await listing.save();
-
-    res.redirect(`/listings/${listing._id}`);
-    })
+    wrapAsync()
 );
 
 //Delete Review Route
